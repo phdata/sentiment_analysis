@@ -10,7 +10,9 @@ from ApposDict import *
 from SlangsDict import *
 from Emoticons import *
 
+
 stop_english = Counter(stopwords.words())
+
 sb_stem = SnowballStemmer("english", ignore_stopwords=True)
 pt_stem = PorterStemmer()
 
@@ -256,6 +258,7 @@ def remove_stop_words(text, stop_words=stop_english):
         text(str): text after stop words removal
     """
     stop_words = set(stop_words)
+    stop_words.update(['fuck', 'fucking', 'shit', 'bitch', 'ass', 'hell'])
     split_list = text.split(" ")
     split_list = [word for word in split_list if word not in stop_words]
     return " ".join(split_list)
